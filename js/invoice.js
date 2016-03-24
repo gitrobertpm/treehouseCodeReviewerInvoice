@@ -255,8 +255,12 @@ var makeRows = function() {
 		var td = document.createElement("td");
 		var ip = document.createElement("input");
 		ip.setAttribute("type", "text");
-		if (tdip === 5) {
+		if (tdip === 2) {
+			ip.setAttribute("class", "invoiceInput invoiceProject");
+		} else if (tdip === 5) {
 			ip.setAttribute("class", "invoiceInput billable");
+		} else if (tdip === 6) {
+			ip.setAttribute("class", "invoiceInput invoiceStudent");
 		} else {
 			ip.setAttribute("class", "invoiceInput");
 		}

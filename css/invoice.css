@@ -274,6 +274,9 @@ td {
 	padding-right: 5px;
 }
 
+.invoiceProject, .invoiceStudent {
+	font-size: .75em;
+}
 
 
 /* WARNING ************************************** */
@@ -417,6 +420,10 @@ footer p {
 		width: 125px;
 	}
 	
+	.invoiceNotes {
+		text-align: left;
+	}
+	
 	footer p {
 		text-align: left;
 	}
@@ -435,7 +442,7 @@ footer p {
 		margin-top: 0px;
 	}
 	
-	button, .buttonWrap, .totalNotesTable, footer {
+	button, .buttonWrap, .invoicePrintHide, footer {
 		display: none;
 	}
 	
