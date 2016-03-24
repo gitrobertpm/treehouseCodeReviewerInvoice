@@ -227,6 +227,7 @@ var calkulator = function() {
 
 				// PRINT TOTAL
 				invoiceInputDue.value = "$\u00A0" + roundTotal;
+				Due.value = "$\u00A0" + roundTotal;
 				
 				// RATE / TOTAL DUE = HOURS WORKED
 				var newTime = newTotal / Number(myRate);
@@ -235,7 +236,8 @@ var calkulator = function() {
 				var roundTime = round(newTime, -1);
 				
 				// PRINT TOTAL
-				invoiceInputTime.value = roundTime + "\u00A0hour(s)";
+				invoiceInputTime.value = roundTime + "\u00A0hours";
+				hours.value = roundTime + "\u00A0hours";
 				
 				// STORE DATA
 				if(typeof(Storage) !== "undefined") {

@@ -278,6 +278,10 @@ td {
 	font-size: .75em;
 }
 
+.invoiceNotes {
+	min-height: 100px;
+}
+
 
 /* WARNING ************************************** */
 .warningWrap {
