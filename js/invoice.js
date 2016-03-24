@@ -45,6 +45,11 @@ window.onload = function() {
 			makeRows();
 		}
 		
+		if (invoiceRow.length > 0) {
+			newRow.disabled = true;
+			oneMore.disabled = false;
+		}
+		
 		// SET TOTALS
 		var totalToggle = localStorage.getItem("rsToggle");
 		
