@@ -167,6 +167,10 @@ var saveToLocal = function() {
 			var idee = invoiceInput[this.marker].getAttribute("id");
 			var val = invoiceInput[this.marker].value;
 			
+			if (rate.value === "" || rate.value === null) {
+				alert("This App can't do any calculations until you enter your hourly rate above.  Just numerical digits please.  Example: 3 or 42 or 420 or 3.14");
+			}
+			
 			if(typeof(Storage) !== "undefined") {
 			    localStorage.setItem(idee, val);
 			}
