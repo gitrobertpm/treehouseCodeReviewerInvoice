@@ -55,10 +55,17 @@ window.onload = function() {
 		
 		if (totalToggle) {
 			invoiceInputDue.value = "$\u00A0" + localStorage.getItem("totalDue");
-			invoiceInputTime.value = localStorage.getItem("totalTime") + "\u00A0hour(s)";
+			invoiceInputTime.value = localStorage.getItem("totalTime") + "\u00A0hours";
+			
+			due.value = "$\u00A0" + localStorage.getItem("totalDue");
+			hours.value = localStorage.getItem("totalTime") + "\u00A0hours";
+			
 		} else {
 			invoiceInputDue.value = "$";
 			invoiceInputTime.value = "hour(s)";
+			
+			due.value = "$";
+			hours.value = "hours";
 		}
 		
 		// CHANGE ID AND RESAVE TO LOCAL STORAGE IF OPENING OLD DATA FROM LOCAL STORAGE
@@ -227,7 +234,7 @@ var calkulator = function() {
 
 				// PRINT TOTAL
 				invoiceInputDue.value = "$\u00A0" + roundTotal;
-				Due.value = "$\u00A0" + roundTotal;
+				due.value = "$\u00A0" + roundTotal;
 				
 				// RATE / TOTAL DUE = HOURS WORKED
 				var newTime = newTotal / Number(myRate);
@@ -243,6 +250,7 @@ var calkulator = function() {
 				if(typeof(Storage) !== "undefined") {
 					localStorage.setItem("totalDue", roundTotal);
 					localStorage.setItem("totalTime", roundTime);
+
 					// SET TOGGLE TO LOCAL STORAGE SO MACHINE KNOWS WHETHER TO LOAD WITH TOTAL VALUES OR NOT
 					localStorage.setItem("rsToggle", true);
 				}
