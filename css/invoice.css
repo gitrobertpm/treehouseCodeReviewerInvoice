@@ -1,0 +1,487 @@
+/*********************************************************
+ MY GENERAL RESETS
+**********************************************************/
+* {
+	box-sizing: border-box;
+}
+
+html {
+	height: 100%;
+}
+
+body {
+	min-height: 100%;
+}
+
+body {
+	font-family: 'Lato', sans-serif;
+	font-size: 1em;
+	position: relative;
+	color: rgba(50,50,50,.9);
+	background: rgb(245,245,245);
+}
+
+html, body, header, section, footer, div,
+h1, h2, h3, h4, h5, h6, p, span, button, a,
+form, ol, ul, li, q, cite, code, img {
+	margin: 0;
+	padding: 0;
+}
+
+h1, h2, h3, h4, h5, h6, button, input {
+	font-family: 'Cinzel', serif;
+}
+
+a {
+	text-decoration: none;
+	outline: none;
+	-webkit-transition: .5s ease;transition: .5s ease;
+}
+
+a:active, a:active, a:hover {
+	
+}
+
+ol, ul {
+	list-style: none;
+}
+
+button {
+	font-family: 'Roboto', sans-serif;
+	color: rgba(50,50,50,0.7);
+	font-size: 1em;
+	font-weight: bold;
+	padding: 5px 20px 7px;
+	background: rgba(245,245,245,0.9);
+	border-radius: 2px;
+	border: none;
+	border-top: 1px solid rgba(245,245,245,0.7);
+	border-bottom: 1px solid rgba(0,0,0,0.3);
+	box-shadow: 0px 1px 2px rgba(50,50,50,0.5);
+	opacity:.9;
+	cursor: pointer;
+	-webkit-transition: .5s ease-out;transition: .5s ease-out;
+}
+
+button:active, button:active, button:hover {
+	color: rgba(50,50,50,0.9);
+}
+
+button:active {
+	box-shadow: none;
+}
+
+button:focus {
+	box-shadow: 0px 4px 4px rgba(50,50,50,0.5);
+}
+
+button:hover {
+	box-shadow: 0px 4px 4px rgba(50,50,50,0.5);
+}
+
+button:disabled {
+	box-shadow: none;
+	opacity: .5;
+}
+
+label {
+	color: rgba(50,50,50,0.75);
+	border-radius: 3px;
+}
+
+hr {
+	margin: 25px auto 35px;
+	border-radius: 50%;
+	opacity: 0.7;
+}
+/*** END GENERAL ****************************************/
+
+
+body {
+	text-align: center;
+	padding-bottom: 225px;
+}
+
+.primeWrap {
+	width: 100%;
+	min-height: 100%;
+	max-width: 900px;
+	margin: auto;
+}
+
+
+/* HEADER ****************************************************/
+
+header {
+	padding-left: 10px;
+	padding-right: 10px;
+}
+
+header svg {
+	width: 50px;
+	height: 50px;
+	margin: 10px auto auto;
+}
+
+header h1 {
+	font-family: 'Fredoka One', cursive;
+	font-size: 1.25em;
+	color: rgb(76, 175, 80);
+	margin: 10px auto;
+}
+
+
+/* YOUR INFO *****************************************************/
+
+.mainInfoWrap {
+	width: 100%;
+	margin: 15px auto;
+	padding-left: 10px;
+	padding-right: 10px;
+}
+
+
+.infoWrap {
+	display: inline-block;
+	vertical-align: top;
+	text-align: left;
+	width: 100%;
+	min-width: 325px;
+	max-width: 435px;
+	margin: auto;
+	border: 1px solid rgba(50,50,50,0.2);
+	border-left: none;
+}
+
+
+.infoTitle {
+	display: inline-block;
+	font-family: 'Fredoka One', cursive;
+	font-size: .88em;
+	color: rgb(76, 175, 80);
+	width: 85px;
+	margin: 5px auto;
+}
+
+#rateLabel {
+	font-size: .88em;
+}
+
+.yourInfoInput {
+	display: inline-block;
+	font-family: 'Roboto', sans-serif;
+	width: calc(100% - 100px);
+	margin: 5px auto 5px 5px;
+	padding-left: 5px;
+	border-radius: 3px;
+	border: 1px solid rgba(50,50,50,0.2);
+}
+
+
+
+/* BUTTONS ******************************************************/
+.buttonWrap {
+	text-align: left;
+	width: 100%;
+	margin: 15px auto;
+	padding-left: 10px;
+	padding-right: 10px;
+}
+
+.rowsInput {
+	text-align: center;
+	width: 40px;
+	height: 37px;
+	margin: 10px auto;
+	border: solid thin;
+	border-color: rgba(50,50,50,0.2);
+}
+
+.clearAll,
+.newRow,
+.oneMore {
+	margin: 10px auto;
+	padding-left: 10px;
+	padding-right: 10px;
+	background: rgba(75,175,80,0.2);
+	border: 2px solid rgb(75,175,80);
+}
+
+.newRow {
+	font-size: .88em;
+	width: 120px;
+}
+
+.clearAll {
+	font-size: .88em;
+	float: right;
+	width: 90px;
+}
+
+
+
+
+/* TABLE ************************************************/
+
+table {
+	width: 100%;
+	max-width: 885px;
+	margin: 10px auto;
+	border: solid thin; 
+	border-collapse: collapse; 
+}
+
+th, tr {
+	padding: 5px 25px;
+	border: solid thin;
+	border-color: rgba(50,50,50,0.2);
+}
+
+th {
+	font-family: 'Fredoka One', cursive;
+	vertical-align: middle; 
+	text-align: center;
+	background: rgba(75,175,80,0.2);
+}
+
+.subHeader {
+	background: rgba(62,39,35,0.5);
+}
+
+td {
+	font-family: 'Roboto', sans-serif;
+	white-space: nowrap;
+	vertical-align: top;
+	height: 30px;
+	padding: 5px;
+	border: solid thin;
+	border-color: rgba(50,50,50,0.2);
+}
+
+.invoiceInput,
+.invoiceInput2 {
+	display: inline-block;
+	font-family: 'Roboto', sans-serif;
+	text-align: center;
+	width: 100%;
+	border: none;
+}
+
+.billableHead {
+	font-size: .9em;
+	white-space: nowrap;
+	padding-left: 5px;
+	padding-right: 5px;
+}
+
+
+
+/* WARNING ************************************** */
+.warningWrap {
+	display: none;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	width: 100%;
+	height: 100%;
+	text-align: center;
+	margin: auto;
+	padding: 5px;
+	background: rgba(50,50,50,0.9);
+	z-index: 99;
+	opacity: 0;
+}
+
+.warning {
+	width: 95%;
+	max-width: 950px;
+	padding: 25px 5px 40px;
+	margin: 50px auto auto;
+	border-radius: 3px;
+	border: 3px solid rgba(75,175,80,0.5);
+	background: rgb(245,245,245);
+}
+
+.warning p {
+	font-family: 'Fredoka One', cursive;
+	letter-spacing: 1px;
+}
+
+.warningButton {
+	font-family: 'Fredoka One', cursive;
+	letter-spacing: 2px;
+	color: white;
+	margin: 10px;
+	background: rgb(75,175,80);
+	border: 5px solid rgba(75,175,80,0.2);
+}
+
+
+
+/* WARNING ************************************** */
+footer {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	height: 200px;
+	background: rgb(50,50,50);
+}
+
+.footerInnerWrap {
+	color: rgb(245,245,245);
+	width: 100%;
+	max-width: 900px;
+	margin: auto;
+	padding: 25px 10px 10px;
+}
+
+footer h2 {
+	font-family: 'Fredoka One', cursive;
+	color: rgb(211,231,212);
+	margin-bottom: 15px;
+}
+
+footer p {
+	font-size: .88em;
+	color: rgb(211,231,212);
+}
+
+.cr {
+	font-size: .75em;
+	color: rgb(211,231,212);
+	margin-top: 45px;
+}
+
+
+@media screen and (min-width: 750px) {
+	header svg {
+		display: inline-block;
+		float: left;
+		width: 50px;
+		height: 50px;
+		margin: 10px auto auto;
+	}
+	
+	header h1 {
+		display: inline-block;
+		font-size: 2.25em;
+		text-align: left;
+	}
+	
+	
+	.infoWrap {
+		width: calc(50% - 5px);
+		border: none;
+	}
+	
+	.infoTitle {
+		font-size: 1em;
+		margin: 10px auto;
+	}
+	
+	.personalInfoWrap .infoTitle {
+		width: 75px;
+	}
+
+	.billInfoWrap .infoTitle {
+		width: 95px;
+	}
+	
+	#rateLabel {
+		font-size: .95em;
+	}
+	
+	.personalInfoWrap .yourInfoInput {
+		width: calc(100% - 90px);
+		margin-right: 5px;
+	}
+
+	.billInfoWrap .yourInfoInput {
+		width: calc(100% - 110px);
+		margin-right: 5px;
+	}
+	
+	.newRow {
+		font-size: 1em;
+		width: 140px;
+		animation: showButton 2s ease-out .25s;
+	}
+	
+	@keyframes showButton {
+		20% {
+			background: rgb(255,255,255);
+			border-color: rgb(255,255,255);
+		}
+		100% {
+			background: rgba(75,175,80,0.2);
+			border-color: rgb(75,175,80);
+		}
+	}
+	
+	.rowsInput {
+		width: 100px;
+		margin-left: 15px;
+	}
+
+	.clearAll {
+		font-size: 1em;
+		width: 125px;
+	}
+}
+
+@media print {
+	body {
+		margin-top: 0px;
+	}
+	
+	header svg {
+		margin-top: 0px;
+	}
+	
+	button, .buttonWrap, .totalNotesTable, footer {
+		display: none;
+	}
+	
+	header svg {
+		display: inline-block;
+		float: left;
+	}
+	
+	header h1 {
+		text-align: left;
+		font-size: 1.75em;
+		margin-bottom: 0px;
+	}
+	
+	.mainInfoWrap {
+		margin: 5px auto;
+		text-align: left;
+		float: left;
+	}
+	
+	.infoWrap {
+		display: inline-block;
+		vertical-align: top;
+		text-align: left;
+		width: calc(50% - 3px);
+		border: none;
+	}
+	
+	.personalInfoWrap .infoTitle {
+		width: 60px;
+	}
+	
+	.personalInfoWrap .yourInfoInput {
+		width: calc(100% -10px);
+	}
+	
+	#address {
+		font-size: .88em;
+	}
+	
+	.yourInfoInput {
+		border: none;
+	}
+	
+}
