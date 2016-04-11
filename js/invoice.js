@@ -308,9 +308,8 @@ var makeRows = function() {
 	invoiceBody.appendChild(tr);
 };
 
-
-// CREATE ROWS AND SET NUMBER TO LOCAL STORAGE
-newRow.addEventListener("click", function() {	
+// HELPER FUNCTION TO MAKE ROWS
+var makeSomeRowsYo = function() {
 	if (rows.value < 1 || rows.value > 42 || isNaN(rows.value)) {
 		// ERROR FOR iNCORRECT INPUT
 		alert("Please replace the '#' with a number between 1 and 42, then try again.");
@@ -328,7 +327,20 @@ newRow.addEventListener("click", function() {
 	
 	changeId();
 	saveToLocal();
-	calkulator();
+	calkulator();	
+};
+
+
+// CREATE ROWS AND SET NUMBER TO LOCAL STORAGE
+newRow.addEventListener("click", function() {	
+	makeSomeRowsYo();
+});
+
+// ADD ENTER BUTTON FUNCTIONALITY TO UNPUT
+rows.addEventListener("keydown", function(e) {
+	if(e.keyCode == 13){
+		makeSomeRowsYo();
+	}
 });
 
 oneMore.disabled = true;
