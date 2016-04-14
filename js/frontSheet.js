@@ -6,28 +6,29 @@
  *
  *********************************************/
 "use strict";
+
+//////////////////////// FRONT SHEET SPECIFIC
+var hoursFS = document.getElementById("hoursFS");
+var dueFS = document.getElementById("dueFS");
+var newRowFS = document.getElementById("newRowFS");
+var rowsFS = document.getElementById("rowsFS");
+var oneMoreFS = document.getElementById("oneMoreFS");
+var clearAllFS = document.getElementById("clearAllFS");
+var trueClearFS = document.getElementById("trueClearFS");
+var invoiceInputTimeFS = document.getElementById("invoiceInputTimeFS");
+var invoiceInputDueFS = document.getElementById("invoiceInputDueFS");
+/////////////////////////////////////////////
  
 var rate = document.getElementById("rate");
-var hours = document.getElementById("hours");
-var due = document.getElementById("due");
-var invoiceInputTime = document.getElementById("invoiceInputTime");
-var invoiceInputDue = document.getElementById("invoiceInputDue");
 var yourInfoInput = document.getElementsByClassName("yourInfoInput");
 var invoiceBody = document.getElementById("invoiceBody");
 var invoiceRow = document.getElementsByClassName("invoiceRow");
 var invoiceInput = document.getElementsByClassName("invoiceInput");
 var invoiceInput2 = document.getElementsByClassName("invoiceInput2");
 var billable = document.getElementsByClassName("billable");
-
-var newRow = document.getElementById("newRow");
-var rows = document.getElementById("rows");
-var oneMore = document.getElementById("oneMore");
-var clearAll = document.getElementById("clearAll");
-
+var clockable = document.getElementsByClassName("clockable");
 var warningWrap = document.getElementById("warningWrap");
-var trueClear = document.getElementById("trueClear");
 var closeIt = document.getElementById("close");
-
 var instructions = document.getElementById("instructions");
 var instructionsModal = document.getElementsByClassName("instructionsModal")[0];
 var instructionClose = document.getElementsByClassName("instructionClose")[0];
@@ -35,37 +36,36 @@ var instructionClose = document.getElementsByClassName("instructionClose")[0];
 var runningCount = 0;
 var runningTime = 0;
 
-
 // SET ELEMENTS AND INFO FROM LOCAL STORAGE IF LOCAL STORAGE EXISTS
 window.onload = function() {
 	
 	// SET INITIAL NUMBER OF ROWS BASED ON PREVIOUS STATE WITH LOCAL STORAGE
 	if(typeof(Storage) !== "undefined") {
-		for (var lsrn = 1; lsrn <= Number(localStorage.getItem("rowNumber")); lsrn++) {
+		for (var lsrn = 1; lsrn <= Number(localStorage.getItem("rowNumberFS")); lsrn++) {
 			makeRows();
 		}
 		
 		if (invoiceRow.length > 0) {
-			newRow.disabled = true;
-			oneMore.disabled = false;
+			newRowFS.disabled = true;
+			oneMoreFS.disabled = false;
 		}
 		
 		// SET TOTALS
-		var totalToggle = localStorage.getItem("rsToggle");
+		var totalToggle = localStorage.getItem("rsToggleFS");
 		
 		if (totalToggle) {
-			invoiceInputDue.value = "$\u00A0" + localStorage.getItem("totalDue");
-			invoiceInputTime.value = localStorage.getItem("totalTime") + "\u00A0hours";
+			invoiceInputDueFS.value = "$\u00A0" + localStorage.getItem("totalDueFS");
+			invoiceInputTimeFS.value = localStorage.getItem("totalTimeFS") + "\u00A0hours";
 			
-			due.value = "$\u00A0" + localStorage.getItem("totalDue");
-			hours.value = localStorage.getItem("totalTime") + "\u00A0hours";
+			dueFS.value = "$\u00A0" + localStorage.getItem("totalDueFS");
+			hoursFS.value = localStorage.getItem("totalTimeFS") + "\u00A0hours";
 			
 		} else {
-			invoiceInputDue.value = "$";
-			invoiceInputTime.value = "hour(s)";
+			invoiceInputDueFS.value = "$";
+			invoiceInputTimeFS.value = "hour(s)";
 			
-			due.value = "$";
-			hours.value = "hours";
+			dueFS.value = "$";
+			hoursFS.value = "hours";
 		}
 		
 		// CHANGE ID AND RESAVE TO LOCAL STORAGE IF OPENING OLD DATA FROM LOCAL STORAGE
@@ -73,22 +73,22 @@ window.onload = function() {
 		saveToLocal();
 	
 		// SET STATE OF INPUT THAT CREATES ROWS
-		var rsToggle = localStorage.getItem("rsToggle");
+		var rsToggle = localStorage.getItem("rsToggleFS");
 		
 		if (rsToggle) {
-			rows.value = localStorage.getItem("rowNumber");
-			rows.disabled = true;
+			rowsFS.value = localStorage.getItem("rowNumberFS");
+			rowsFS.disabled = true;
 		}
 		
 		// LOAD SAVED NOTES IF THERE BE ANY, ARRRGH!  (HA! JUST THOUGHT I'D BE A PIRATE FOR A MINUTE.  :)  )
 		invoiceInput2[2].value = localStorage.getItem(invoiceInput2[2].getAttribute("id"));
 	} else {
 		alert("This invoice uses local storage to save your entires into this form until you hit clear.  You don't seem to have local storage, so some aspects of this App my not function properly and your data will not be saved.");
-		invoiceInputDue.value = "$";
-		invoiceInputTime.value = "hour(s)";
+		invoiceInputDueFS.value = "$";
+		invoiceInputTimeFS.value = "hour(s)";
 	}
 	
-	// MAKE SURE CALKULATOR DOESNT QUIT WORKING
+	// MAKE SURE CALKULATORS DONT QUIT WORKING
 	calkulator();
 	calkulator2();
 };
@@ -152,7 +152,7 @@ var oneRowNewId = function () {
 	// STICK A MARKER ON INPUT'S PARENT'S PARENT
 	invoiceRow[invoiceRow.length - 1].marker = invoiceRow.length - 1; 
 
-	for (var ci = invoiceInput.length - 7; ci < invoiceInput.length; ci++) {
+	for (var ci = invoiceInput.length - 3; ci < invoiceInput.length; ci++) {
 		var oldIdee = invoiceInput[ci].getAttribute("id");
 		var classIndex = invoiceInput[ci].parentNode.parentNode.marker;
 		var newIdee = oldIdee + classIndex;
@@ -178,8 +178,7 @@ var saveToLocal = function() {
 		    invoiceInput[ii].value = "";
 		}
 		
-			
-		// // INPUT VALUE INTO LOCAL STORGAE ON INPUT BLUR
+		// INPUT VALUE INTO LOCAL STORGAE ON INPUT BLUR
 		invoiceInput[ii].addEventListener("blur", function() {	
 			var idee = invoiceInput[this.marker].getAttribute("id");
 			var val = invoiceInput[this.marker].value;
@@ -192,10 +191,8 @@ var saveToLocal = function() {
 			    localStorage.setItem(idee, val);
 			}
 		});
-
 	}
 };
-
 
 
 // HELPER FUNCTION FOR ROUNDING NUMBERS DOWN TO THE HUNDRETH DECIMAL PLACE
@@ -204,14 +201,14 @@ var round = function(num, places) {
 };
 
 
-// CALULATE AND UPDATE INVOICE TOTALS ON INPUT OF DATA INTO ANY CELL OF THE INVOICE COLUMN TITLED BILLABLE
+// CALULATE AND UPDATE TIME AND DUE TOTALS ON INPUT
 var calkulator = function() {
 	for (var bill = 0; bill < billable.length; bill++) {
 		billable[bill].addEventListener("input", function() {
 			
 			if (isNaN(this.value) || this.value < 0) {
 				// ERROR FOR iNCORRECT INPUT
-				alert("This input takes minutes in positive numerical values.  Example: 3 or 42 or 420 or 3.14 ");
+				alert("This input takes dollars in positive numerical values.  Example: 3 or 42 or 420 or 3.14 ");
 			} else {
 				// RESET COUNT
 				runningCount = 0;
@@ -220,29 +217,20 @@ var calkulator = function() {
 				for (var bill2 = 0; bill2 < billable.length; bill2++) {
 					runningCount += Number(billable[bill2].value);
 				}
-
-				// GET RATE
-				var myRate = rate.value;
-				
-				// CONVERT MINTUES TO HOURS
-				var minToHours = runningCount / 60;
-				
-				// HOURS * RATE = AMOUNT TO ADD
-				var newTotal = Number(myRate) * Number(minToHours);
 				
 				// ROUND TOTAL
-				var roundTotal = round(newTotal, -1);
+				var roundTotal = round(runningCount, -1);
 
 				// PRINT TOTAL
-				invoiceInputDue.value = "$\u00A0" + roundTotal;
-				due.value = "$\u00A0" + roundTotal;
+				invoiceInputDueFS.value = "$\u00A0" + Number(roundTotal);
+				dueFS.value = "$\u00A0" + Number(roundTotal);
 				
 				// STORE DATA
 				if(typeof(Storage) !== "undefined") {
-					localStorage.setItem("totalDue", roundTotal);
+					localStorage.setItem("totalDueFS", Number(roundTotal));
 
 					// SET TOGGLE TO LOCAL STORAGE SO MACHINE KNOWS WHETHER TO LOAD WITH TOTAL VALUES OR NOT
-					localStorage.setItem("rsToggle", true);
+					localStorage.setItem("rsToggleFS", true);
 				}
 			}	
 		});
@@ -251,36 +239,32 @@ var calkulator = function() {
 
 var calkulator2 = function() {
 	for (var bill = 0; bill < billable.length; bill++) {
-		billable[bill].addEventListener("input", function() {
-			
+		clockable[bill].addEventListener("input", function() {
 			if (isNaN(this.value) || this.value < 0) {
 				// ERROR FOR iNCORRECT INPUT
-				alert("This input takes minutes in positive numerical values.  Example: 3 or 42 or 420 or 3.14 ");
+				alert("This input takes hours in positive numerical values.  Example: 3 or 42 or 420 or 3.14 ");
 			} else {
 				// RESET COUNT
 				runningTime = 0;
 				
 				// GET NEW TOTAL
-				for (var bill2 = 0; bill2 < billable.length; bill2++) {
-					runningTime += Number(billable[bill2].value);
+				for (var bill2 = 0; bill2 < clockable.length; bill2++) {
+					runningTime += Number(clockable[bill2].value);
 				}
 				
-				// CONVERT MINTUES TO HOURS
-				var minToHours = runningTime / 60;
-				
 				// ROUND TOTAL
-				var roundTime = round(minToHours, -1);
+				var roundTotal = round(runningTime, -1);
 				
 				// PRINT TOTAL
-				invoiceInputTime.value = roundTime + "\u00A0hours";
-				hours.value = roundTime + "\u00A0hours";
+				invoiceInputTimeFS.value = roundTotal + "\u00A0hours";
+				hoursFS.value = roundTotal + "\u00A0hours";
 				
 				// STORE DATA
 				if(typeof(Storage) !== "undefined") {
-					localStorage.setItem("totalTime", roundTime);
+					localStorage.setItem("totalTimeFS", Number(roundTotal));
 
 					// SET TOGGLE TO LOCAL STORAGE SO MACHINE KNOWS WHETHER TO LOAD WITH TOTAL VALUES OR NOT
-					localStorage.setItem("rsToggle", true);
+					localStorage.setItem("rsToggleFS", true);
 				}
 			}
 		});
@@ -288,45 +272,31 @@ var calkulator2 = function() {
 };
 
 
+
 // HELPER FUNCTION TO GENERATE DESIRED NUMBER OF NEW COMPLETE TABLE ROW(S)
 var makeRows = function() {
 	var tr = document.createElement("tr");
 	tr.setAttribute("class", "invoiceRow");
 	
-	for (var tdip = 1; tdip < 8; tdip++) {
+	for (var tdip = 1; tdip < 4; tdip++) {
 		var td = document.createElement("td");
 		var ip = document.createElement("input");
 		ip.setAttribute("type", "text");
-		if (tdip === 2) {
-			ip.setAttribute("class", "invoiceInput invoiceProject");
-		} else if (tdip === 5) {
-			ip.setAttribute("class", "invoiceInput billable");
-		} else if (tdip === 6) {
-			ip.setAttribute("class", "invoiceInput invoiceStudent");
-		} else {
 			ip.setAttribute("class", "invoiceInput");
+		if (tdip === 2) {
+			ip.setAttribute("class", "invoiceInput clockable");
+		} else if (tdip === 3) {
+			ip.setAttribute("class", "invoiceInput billable");
 		}
 		if (tdip === 1) {
-			ip.setAttribute("id", "date");
+			ip.setAttribute("id", "datesFS");
 			ip.setAttribute("autocomplete", "off");
 		} else if (tdip === 2) {
-			ip.setAttribute("id", "project");
-			ip.setAttribute("autocomplete", "on");
+			ip.setAttribute("id", "inHoursFS");
+			ip.setAttribute("autocomplete", "off");
 		} else if (tdip === 3) {
-			ip.setAttribute("id", "timeStart");
+			ip.setAttribute("id", "inDueFS");
 			ip.setAttribute("autocomplete", "off");
-		} else if (tdip === 4) {
-			ip.setAttribute("id", "timeStop");
-			ip.setAttribute("autocomplete", "off");
-		} else if (tdip === 5) {
-			ip.setAttribute("id", "billable");
-			ip.setAttribute("autocomplete", "off");
-		} else if (tdip === 6) {
-			ip.setAttribute("id", "student");
-			ip.setAttribute("autocomplete", "off");
-		} else if (tdip === 7) {
-			ip.setAttribute("id", "grade");
-			ip.setAttribute("autocomplete", "on");
 		}
 		
 		td.appendChild(ip);
@@ -337,17 +307,17 @@ var makeRows = function() {
 
 // HELPER FUNCTION TO MAKE ROWS
 var makeSomeRowsYo = function() {
-	if (rows.value < 1 || rows.value > 42 || isNaN(rows.value)) {
+	if (rowsFS.value < 1 || rowsFS.value > 42 || isNaN(rowsFS.value)) {
 		// ERROR FOR iNCORRECT INPUT
 		alert("Please replace the '#' with a number between 1 and 42, then try again.");
 	} else {
-		newRow.disabled = true;
-		rows.disabled = true;
-		oneMore.disabled = false;
+		newRowFS.disabled = true;
+		rowsFS.disabled = true;
+		oneMoreFS.disabled = false;
 		if(typeof(Storage) !== "undefined") {
-		    localStorage.setItem("rowNumber", rows.value);
+		    localStorage.setItem("rowNumberFS", rowsFS.value);
 		}
-		for (var rowi = 1; rowi <= rows.value; rowi++) {
+		for (var rowi = 1; rowi <= rowsFS.value; rowi++) {
 			makeRows();
 		}
 	}	
@@ -360,43 +330,43 @@ var makeSomeRowsYo = function() {
 
 
 // CREATE ROWS AND SET NUMBER TO LOCAL STORAGE
-newRow.addEventListener("click", function() {	
+newRowFS.addEventListener("click", function() {	
 	makeSomeRowsYo();
 });
 
 // ADD ENTER BUTTON FUNCTIONALITY TO UNPUT
-rows.addEventListener("keydown", function(e) {
+rowsFS.addEventListener("keydown", function(e) {
 	if(e.keyCode == 13){
 		makeSomeRowsYo();
 	}
 });
 
-oneMore.disabled = true;
+oneMoreFS.disabled = true;
 
-oneMore.onclick = function() {
+oneMoreFS.onclick = function() {
 	makeRows();
 	oneRowNewId();
 	saveToLocal();
 	calkulator();
 	calkulator2();
 	
-	var oldRows = Number(localStorage.getItem("rowNumber"));
+	var oldRows = Number(localStorage.getItem("rowNumberFS"));
 	var newRows = oldRows += 1;
 	
 	// UPDATE NUMBER IN ROWS INPUT BOX TO REPRESENT ACTUAL NUMBER OF ROWS
-	rows.value = newRows;
+	rowsFS.value = newRows;
 	
 	if(typeof(Storage) !== "undefined") {
-		localStorage.setItem("rowNumber", newRows);
+		localStorage.setItem("rowNumberFS", newRows);
 	}
 };
 
 
 // RESET LOCAL STORAGE FOR ROW NUMBER IMPUT AND RE-ENABLE CREATE ROWS BUTTON
-rows.addEventListener("focus", function() {
-	newRow.disabled = false;
+rowsFS.addEventListener("focus", function() {
+	newRowFS.disabled = false;
 	if(typeof(Storage) !== "undefined") {
-		localStorage.setItem("rowNumber", rows.value);
+		localStorage.setItem("rowNumberFS", rowsFS.value);
 	}
 });
 
@@ -413,7 +383,7 @@ invoiceInput2[2].addEventListener("blur", function() {
 
 
 // RESET 
-clearAll.onclick = function() {	
+clearAllFS.onclick = function() {	
 	var opac = 0;
 	var showWarning = setInterval(function() {
 		opac += .01;
@@ -426,19 +396,19 @@ clearAll.onclick = function() {
 };
 
  // TRUE RESET
-trueClear.onclick = function() {
+trueClearFS.onclick = function() {
 	// SET BUTTON AND INPUT STATES
-	newRow.disabled = false;
-	rows.disabled = false;
-	oneMore.disabled = true;
+	newRowFS.disabled = false;
+	rowsFS.disabled = false;
+	oneMoreFS.disabled = true;
 	
 	// CLEAR LOCAL STORAGE
 	if(typeof(Storage) !== "undefined") {
-		localStorage.removeItem("rsToggle");
-		localStorage.removeItem("rowNumber");
+		localStorage.removeItem("rsToggleFS");
+		localStorage.removeItem("rowNumberFS");
 		
-		localStorage.removeItem("totalDue");
-		localStorage.removeItem("totalTime");
+		localStorage.removeItem("totalDueFS");
+		localStorage.removeItem("totalTimeFS");
 		
 		var idee2 = invoiceInput2[2].getAttribute("id");
 		localStorage.removeItem(idee2);
@@ -457,6 +427,7 @@ closeIt.onclick = function() {
 	warningWrap.style.opacity = "0";
 	warningWrap.style.display = "none";
 };
+
 
 // OPEN INSTRUCITONS
 instructions.onclick = function() {
