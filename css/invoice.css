@@ -134,7 +134,7 @@ header h1 {
 
 header a {
 	font-family: 'Roboto', sans-serif;
-	color: rgba(50,50,50,0.7);
+	color: rgba(255,255,255,0.9);
 	font-size: 1em;
 	font-weight: bold;
 	padding: 5px 20px 7px;
@@ -150,6 +150,7 @@ header a {
 }
 
 header a:hover {
+	color: rgba(50,50,50,0.7);
 	box-shadow: 4px 4px 4px rgba(50,50,50,0.5);
 }
 
