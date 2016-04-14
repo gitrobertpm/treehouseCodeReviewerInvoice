@@ -440,7 +440,8 @@ footer h2 {
 	color: rgb(211,231,212);
 }
 .instructionsModal p {
-	text-align: center;
+	/* text-align: center; */
+	margin: 10px auto 10px 22px;
 }
 
 .cr {
@@ -541,6 +542,11 @@ footer h2 {
 	.instructionsModal p,
 	footer p {
 		font-size: 1em;
+	}
+	
+	.calcs {
+		font-size: .88em !important;
+		text-align: center !important;
 	}
 	
 	.cr {
