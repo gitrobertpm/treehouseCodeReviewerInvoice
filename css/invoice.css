@@ -380,6 +380,7 @@ footer h2 {
 
 #instructions:hover {
 	color: rgb(26,125,30);
+	text-shadow: 1px 1px 0px rgba(211,231,212,0.5), -1px -1px 0px rgba(211,231,212,0.5), 1px -1px 0px rgba(211,231,212,0.5), -1px 1px 0px rgba(211,231,212,0.5);
 }
 
 .instructionsModal {
@@ -467,10 +468,6 @@ footer h2 {
 		display: inline-block;
 		font-size: 2.25em;
 		text-align: left;
-	}
-	
-	.frontSheetH1 {
-		font-size: 1.75em;
 	}
 	
 	header a {
