@@ -104,7 +104,6 @@ body {
 
 
 /* HEADER ****************************************************/
-
 header {
 	width: 100%;
 	padding-left: 10px;
@@ -154,8 +153,8 @@ header a:hover {
 	box-shadow: 4px 4px 4px rgba(50,50,50,0.5);
 }
 
-/* YOUR INFO *****************************************************/
 
+/* YOUR INFO *****************************************************/
 .mainInfoWrap {
 	width: 100%;
 	margin: 15px auto;
@@ -245,7 +244,6 @@ header a:hover {
 
 
 /* TABLE ************************************************/
-
 table {
 	width: 100%;
 	max-width: 885px;
